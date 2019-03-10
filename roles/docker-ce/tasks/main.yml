@@ -1,0 +1,47 @@
+---
+
+- name: Removing conflicting Dockers
+  apt: 
+    name: "{{ item }}"
+    state: absent
+    update_cache: yes
+  with_items:
+    - "docker"
+    - "docker-engine"
+    - "docker.io"
+
+- name: Install dependencies
+  apt: 
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - "apt-transport-https"
+    - "ca-certificates"
+    - "curl"
+    - "software-properties-common"
+
+- name: Adding Docker apt key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    id: 0EBFCD88
+    state: present
+
+- name: Adding Docker repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+
+- name: Install Docker
+  apt:
+    update_cache: yes
+    name: docker-ce
+    state: present
+
+- name: Adding users to groups 
+  user:
+    name: "{{ item }}"
+    state: present
+    groups: adm, docker 
+    append: yes
+  when: docker_users is defined
+  with_items: "{{ docker_users }}"

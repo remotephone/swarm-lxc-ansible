@@ -1,0 +1,7 @@
+---
+
+NASUSER: myuser
+NASPASSWORD: mypass
+NAS_IP: 192.168.1.100
+NAS_DIR: docker
+MOUNT_PT: /mnt/docker

@@ -1,0 +1,27 @@
+---
+
+- name: install python 2
+  gather_facts: no
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+- name: Configure apt-cache
+  copy:
+    src: 01proxy
+    dest: /etc/apt/apt.conf.d/01proxy
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Make sure NAS mounts at boot once iface is up
+  copy:
+    src: mount
+    dest: /etc/network/if-up.d/mount
+    owner: root
+    group: root
+    mode: 0644
+
+- name: update and upgrade
+  become: true
+  apt:
+    update_cache: yes
+    upgrade: yes 

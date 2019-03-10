@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+#  become: yes
+  roles:
+    - bootstrap
+    - hostconfig
+    - docker-ce
+    - docker-compose
+#    - docker-swarm

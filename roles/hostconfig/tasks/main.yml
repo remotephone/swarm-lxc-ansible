@@ -1,0 +1,9 @@
+---
+
+- name: configure NAS
+  mount:
+    state: present
+    fstype: cifs
+    opts: rw,username={{ NASUSER }},password={{ NASPASSWORD }},vers=2.0
+    src: //{{ NAS_IP }}/{{ NAS_DIR }}
+    name: "{{ MOUNT_PT }}"

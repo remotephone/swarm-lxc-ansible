@@ -1,0 +1,19 @@
+---
+
+- name: Installing packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-setuptools
+    - python-pip
+
+- name: Installing dependencies
+  pip:
+    name: "{{ docker_compose_pip_version }}"
+
+- name: Installing docker compose
+  pip:
+    name: docker-compose
+    version: "{{ docker_compose_version if docker_compose_version else omit }}"
+    state: present
