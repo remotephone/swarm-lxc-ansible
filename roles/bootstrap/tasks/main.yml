@@ -1,7 +1,7 @@
 ---
 
 - name: install python 2
-  gather_facts: no
+  delegate_facts: no
   raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
 - name: Configure apt-cache
