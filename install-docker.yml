@@ -7,4 +7,3 @@
     - hostconfig
     - docker-ce
     - docker-compose
-#    - docker-swarm
