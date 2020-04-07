@@ -19,16 +19,21 @@
     - "ca-certificates"
     - "curl"
     - "software-properties-common"
+    - "python-setuptools"
+    - "python-pip"
+    - "python3-pip"
+    - "virtualenv"
+    - "python3-setuptools"
 
 - name: Adding Docker apt key
   apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
+    url: https://download.docker.com/linux/debian/gpg
     id: 0EBFCD88
     state: present
 
 - name: Adding Docker repo
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
     state: present
 
 - name: Install Docker
@@ -36,6 +41,10 @@
     update_cache: yes
     name: docker-ce
     state: present
+
+- name: Install Docker Module for Python
+  pip:
+    name: docker
 
 - name: Adding users to groups 
   user:
