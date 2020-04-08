@@ -3,12 +3,12 @@ all:
     mgr:
       hosts:
         mgr1:
-          ansible_host: 1.1.1.1
+          ansible_host: 10.0.1.1
           ansible_user: root
     workers:
       hosts:
         worker1:
-          ansible_host: 1.1.1.2
+          ansible_host: 10.0.1.2
           ansible_user: root
         worker2:
           ansible_host: 1.1.1.3
