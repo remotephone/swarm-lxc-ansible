@@ -2,23 +2,22 @@
 
 - name: Removing conflicting Dockers
   apt: 
-    name: "{{ item }}"
+    name:
+      - "docker"
+      - "docker-engine"
+      - "docker.io"
     state: absent
     update_cache: yes
-  with_items:
-    - "docker"
-    - "docker-engine"
-    - "docker.io"
+
 
 - name: Install dependencies
   apt: 
-    name: "{{ item }}"
+    name:
+      - "apt-transport-https"
+      - "ca-certificates"
+      - "curl"
+      - "software-properties-common"
     state: latest
-  with_items:
-    - "apt-transport-https"
-    - "ca-certificates"
-    - "curl"
-    - "software-properties-common"
 
 - name: Adding Docker apt key
   apt_key:
