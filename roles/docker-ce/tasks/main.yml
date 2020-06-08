@@ -17,8 +17,6 @@
       - "ca-certificates"
       - "curl"
       - "software-properties-common"
-      - "python-setuptools"
-      - "python-pip"
       - "python3-pip"
       - "virtualenv"
       - "python3-setuptools"
@@ -33,7 +31,7 @@
 
 - name: Adding Docker repo
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
     state: present
 
 - name: Install Docker

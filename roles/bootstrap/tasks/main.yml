@@ -1,10 +1,11 @@
 ---
 
-- name: install python 2
-  delegate_facts: no
-  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+# - name: install python 2
+#   delegate_facts: no
+#   raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
 - name: Configure apt-cache
+  become: true
   copy:
     src: 01proxy
     dest: /etc/apt/apt.conf.d/01proxy
@@ -13,6 +14,7 @@
     mode: 0644
 
 - name: Make sure NAS mounts at boot once iface is up
+  become: true
   copy:
     src: mount
     dest: /etc/network/if-up.d/mount

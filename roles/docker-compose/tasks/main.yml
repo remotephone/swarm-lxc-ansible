@@ -3,13 +3,9 @@
 - name: Installing packages
   apt:
     name:     
-      - python-setuptools
-      - python-pip
+      - python3-setuptools
+      - python3-pip
     state: present
-
-- name: Installing dependencies
-  pip:
-    name: "{{ docker_compose_pip_version }}"
 
 - name: Installing docker compose
   pip:

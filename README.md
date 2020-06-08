@@ -1,6 +1,6 @@
 # swarm-lxc-ansible
 
-Install docker on debian 10 with ansible. Also install docker swarm.
+Install docker on Ubuntu 20.04 with ansible 2.8.3. Also install docker swarm.
 
 This playbook bootstraps a system and then installs docker. This currently just installs Docker-ce, I run the two playbooks separately. 
 

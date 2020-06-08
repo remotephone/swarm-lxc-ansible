@@ -1,6 +1,6 @@
 ---
 
 # version
-docker_compose_version: 1.22.0
+docker_compose_version: 1.26.0
 # optionally set to specific version (pip==9.0.3)
-docker_compose_pip_version: pip
+docker_compose_pip_version: pip3
