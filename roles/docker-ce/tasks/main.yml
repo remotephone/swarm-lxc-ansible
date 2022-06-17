@@ -40,6 +40,19 @@
     name: docker-ce
     state: present
 
+- name: set docker daemon file
+  ansible.builtin.copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload service docker
+  ansible.builtin.systemd:
+    name: docker.service
+    state: reloaded
+
 - name: Install Docker Module for Python
   pip:
     name: docker
